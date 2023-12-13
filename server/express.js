@@ -15,7 +15,7 @@ const app = express();
 const CURRENT_WORKING_DIR = process.cwd();
 
 // Serve static files from the 'dist/app' directory
-app.use(express.static(path.join(CURRENT_WORKING_DIR, '..', 'dist/app')));
+app.use(express.static(path.join(CURRENT_WORKING_DIR, 'dist/app')));
 
 // Use body-parser middleware
 app.use(express.json());
