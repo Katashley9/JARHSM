@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   card: {
     margin: '24px 0px',
     padding: '16px 40px 60px 40px',
-    backgroundColor: '#80808017',
+    backgroundColor: '#ECFFDC',
   },
   title: {
     margin: theme.spacing(2),
@@ -80,6 +80,7 @@ const useStyles = makeStyles((theme) => ({
   },
   continueBtn: {
     marginLeft: '10px',
+
   },
   itemShop: {
     display: 'block',
@@ -87,6 +88,7 @@ const useStyles = makeStyles((theme) => ({
     color: '#78948f',
   },
   removeButton: {
+    color: 'red',
     fontSize: '0.8em',
   },
 }));
@@ -126,9 +128,10 @@ export default function CartItems(props) {
 
   return (
     <Card className={classes.card}>
-      <Typography type="title" className={classes.title}>
+      <Typography type="title" className={classes.title} style={{ color: '#50C878' }}>
         Shopping Cart
       </Typography>
+
       {cartItems.length > 0 ? (
         <span>
           {cartItems.map((item, i) => (
@@ -188,7 +191,7 @@ export default function CartItems(props) {
                       color="primary"
                       onClick={removeItem(i)}
                     >
-                      x Remove
+                      Remove
                     </Button>
                   </div>
                 </div>
@@ -199,16 +202,23 @@ export default function CartItems(props) {
           <div className={classes.checkout}>
             <span className={classes.total}>Total: ${getTotal()}</span>
             {!props.checkout && auth.isAuthenticated() ? (
-              <Button
-                color="secondary"
-                variant="contained"
-                onClick={openCheckout}
-              >
-                Checkout
-              </Button>
+              <div>
+                <Button
+                  color="secondary"
+                  variant="contained"
+                  onClick={openCheckout}
+                  style={{ marginBottom: '20px' }} // Adjust the value as needed
+                >
+                  Checkout
+                </Button>
+              </div>
             ) : (
               <Link to="/signin">
-                <Button color="primary" variant="contained">
+                <Button
+                  color="primary"
+                  variant="contained"
+                  style={{ marginBottom: '50px' }} // Adjust the value as needed
+                >
                   Sign in to checkout
                 </Button>
               </Link>
@@ -217,6 +227,7 @@ export default function CartItems(props) {
               <Button variant="contained">Continue Shopping</Button>
             </Link>
           </div>
+
         </span>
       ) : (
         <Typography variant="subtitle1" component="h3" color="primary">
